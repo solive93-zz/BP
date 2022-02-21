@@ -1,0 +1,29 @@
+version: "3.5"
+
+services:
+    bp_api:
+        ports:
+            - "8000:8000"
+        volumes:
+            - .:/var/www/html
+            - /var/www/html/vendor/
+        build: .
+        command: php artisan serve
+        restart: always
+        depends_on:
+            - bp_db
+    bp_db:
+        image: mysql:8.0
+        restart: always
+        environment:
+            MYSQL_DATABASE: ${DB_DATABASE}
+            MYSQL_USER: ${DB_USERNAME}
+            MYSQL_PASSWORD: ${DB_PASSWORD}
+            MYSQL_ROOT_PASSWORD:
+        command: mysqld --default-authentication-plugin=mysql_native_password
+        ports:
+            - "3306:3306"
+        volumes:
+            - ./database/mysql-data:/var/lib/mysql:rw
+volumes:
+    mysql-data:
