@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class UserSqlFileSeeder extends Seeder
 {
-    const SQL_FILE_PATH = 'sql/database.sql';
+    private const SQL_FILE_PATH = 'database/sql/database.sql';
 
     public function run(): void
     {

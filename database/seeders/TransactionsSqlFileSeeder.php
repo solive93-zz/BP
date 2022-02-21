@@ -7,7 +7,7 @@ use Illuminate\Support\Facades\DB;
 
 class TransactionsSqlFileSeeder extends Seeder
 {
-    private const SQL_FILE_PATH = 'sql/transactions.sql';
+    private const SQL_FILE_PATH = 'database/sql/transactions.sql';
 
     public function run(): void
     {
