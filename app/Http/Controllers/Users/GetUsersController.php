@@ -17,11 +17,13 @@ class GetUsersController extends Controller
 
     public function __invoke(Request $request): JsonResponse
     {
-        $citizenship = $request->get('citizenship') ?? null;
+        // Endpoint prepared to retrieve users active/unactive and with any citizenship.
+        // For sake of simplicity, default values are 'active' and 'Austria'
+        $isActive = $request->get('is_active') ?? true;
+        $citizenship = $request->get('citizenship') ?? 'Austria';
 
-        // Assuming users queried will always be the active ones
         $users = $this->queryHandler->ask(
-            new GetUsersQuery(true, $citizenship)
+            new GetUsersQuery($isActive, $citizenship)
         );
 
         return new JsonResponse($users->toArray(), Response::HTTP_OK);
