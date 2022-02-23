@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\DeleteUserController;
 use App\Http\Controllers\Users\GetUsersController;
 use App\Http\Controllers\Users\PatchUserDetailsController;
 use Illuminate\Http\Request;
@@ -23,4 +24,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 Route::prefix('/users')->group(function() {
     Route::get('/', GetUsersController::class);
     Route::patch('/{userId}/details', PatchUserDetailsController::class);
+    Route::delete('/{userId}', DeleteUserController::class);
 });

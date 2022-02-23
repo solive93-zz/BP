@@ -21,4 +21,14 @@ class EloquentUserRepository implements UserRepository
             ->select('users.*', 'user_details.*')
             ->get();
     }
+
+    public function delete(int $userId): bool
+    {
+        $user = DB::table(self::DB_USER_TABLE)->find($userId);
+        if(!$user) {
+            return false;
+        }
+
+        return DB::table(self::DB_USER_TABLE)->delete($user->id);
+    }
 }

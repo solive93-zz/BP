@@ -2,7 +2,7 @@
 
 namespace App\Application\Commands;
 
-class UpdateUserDetailsCommand
+class UpdateUserDetailsCommand implements Command
 {
     public function __construct(
         private int $userId, private string $firstName, private string $lastName, private string $phoneNumber

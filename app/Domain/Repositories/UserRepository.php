@@ -7,4 +7,6 @@ use Illuminate\Support\Collection;
 interface UserRepository
 {
     public function findByCitizenship(string $city): Collection;
+
+    public function delete(int $userId): bool;
 }
