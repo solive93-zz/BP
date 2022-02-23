@@ -2,8 +2,10 @@
 
 namespace App\Providers;
 
+use App\Domain\Repositories\UserDetailRepository;
 use App\Domain\Repositories\UserRepository;
-use App\Infrastructure\Repositories\MysqlUserRepository;
+use App\Infrastructure\Repositories\EloquentUserDetailRepository;
+use App\Infrastructure\Repositories\EloquentUserRepository;
 use Illuminate\Support\ServiceProvider;
 
 class AppServiceProvider extends ServiceProvider
@@ -15,7 +17,8 @@ class AppServiceProvider extends ServiceProvider
      */
     public function register()
     {
-        $this->app->bind(UserRepository::class, MysqlUserRepository::class);
+        $this->app->bind(UserRepository::class, EloquentUserRepository::class);
+        $this->app->bind(UserDetailRepository::class, EloquentUserDetailRepository::class);
     }
 
     /**

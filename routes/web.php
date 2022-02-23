@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\Users\GetUsersController;
+use App\Http\Controllers\Users\PatchUserDetailsController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -13,5 +14,3 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-
-Route::get('/users', GetUsersController::class);
